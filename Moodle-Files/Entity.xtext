@@ -1,0 +1,27 @@
+grammar org.xtext.example.mydsl.Entity with org.eclipse.xtext.common.Terminals
+
+generate entity "http://www.xtext.org/example/mydsl/Entity"
+
+
+DominanModel:
+	(elements+=Type)*
+;
+
+Type:
+	DataType | Entity
+;
+
+DataType:
+	'datatype' name=ID
+;	
+
+Entity:
+	'entity' name=ID '{'
+		(features+=Feature)*	
+	'}'	
+;
+
+Feature:
+	name=ID ':' type = [Type]
+;
+	
